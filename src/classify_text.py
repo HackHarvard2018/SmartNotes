@@ -1,4 +1,3 @@
-
 from google.cloud import language_v1beta2 as language
 from google.cloud.language_v1beta2 import enums
 from google.cloud.language_v1beta2 import types

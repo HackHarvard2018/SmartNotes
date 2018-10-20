@@ -5,9 +5,9 @@ from google.cloud.speech_v1p1beta1 import types
 from google.cloud import storage
 import datetime
 
-class Speech2Text:
+class SpeechToText:
 
-    def speech2text(self, source_file_name):
+    def speech_to_text(self, source_file_name):
         # Instantiates a client
         client = speech.SpeechClient()
 
@@ -29,7 +29,7 @@ class Speech2Text:
         )
 
         audio = types.module.RecognitionAudio(
-            uri='gs://smartnotes/audio_clips/'+source_file_name
+            uri='gs://smartnotes/audio_clips/' + source_file_name
         )
 
         # Detects speech in the audio file
@@ -51,6 +51,6 @@ class Speech2Text:
         blob.upload_from_string(data)
         return blob.exists()
 
-speech_client = Speech2Text()
-results = speech_client.speech2text('test6.flac')
+speech_client = SpeechToText()
+results = speech_client.speech_to_text('test6.flac')
 speech_client.upload_transcript(results, str(datetime.datetime.now()).replace(' ', '_') + '.txt')
