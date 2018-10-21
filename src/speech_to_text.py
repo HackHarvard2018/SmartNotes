@@ -1,4 +1,4 @@
-# Imports the Google Cloud client library
+
 from google.cloud import speech_v1p1beta1 as speech
 from google.cloud.speech_v1p1beta1 import enums
 from google.cloud.speech_v1p1beta1 import types
@@ -8,7 +8,6 @@ import datetime
 class SpeechToText:
 
     def speech_to_text(self, source_file_name):
-        # Instantiates a client
         client = speech.SpeechClient()
 
         metadata = types.module.RecognitionMetadata()
@@ -32,7 +31,6 @@ class SpeechToText:
             uri='gs://smartnotes/audio_clips/' + source_file_name
         )
 
-        # Detects speech in the audio file
         response = client.long_running_recognize(config, audio)
         res = response.result(timeout=90)
         # results = res.results[-1]
